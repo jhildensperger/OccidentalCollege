@@ -1,0 +1,390 @@
+{"places":
+  [{
+    "title":"Alumni Drive",
+    "image_url": "http://www.oxy.edu/Images/Maps/alumdr.jpg",
+    "description": "Alumni Drive, the formal entrance to the Occidental campus, was re-landscaped in 1987, including the planting of Eucalyptus maculati and Cinnamomum camphora. The Occidental College sign at the entrance to Alumni Drive was a gift of the Class of 1979.",
+    "lon": "-118.213890",
+    "lat": "34.126221"
+  },
+  {
+  "title":"Arthur G. Coons Administrative Center",
+    "image_url": "http://www.oxy.edu/Images/Maps/coons.jpg",
+    "description": "The Arthur G. Coons Administrative Center, named by the Board of Trustees in honor of the College's ninth president, was financed by the gifts of alumni, friends, corporations, and foundations. In the building are located the offices of the President, Dean of the College, Vice President for Administration and Finance, Institutional Advancement, Financial Aid, Registrar, Student Services, Communications, Cashier, Career Development Center, Copy Center, Cushman Trustee Board Room, Business Office, and Human Resources. Erected 1968.",
+    "lon": "-118.210876",
+    "lat": "34.127235"
+  },
+  {
+  "title":"Remsen Bird Hillside Theater",
+    "image_url": "http://www.oxy.edu/images/Maps/remsenbird_1.jpg",
+    "description": "The Remsen Bird Hillside Theater, named by the Board of Trustees in honor of the College's President from 1921 to 1946, is the gift of the Eagle Rock community, Mr. Alphonzo Bell, '95, Mr. William Meade Orr, Mrs. Calvin Pardee, and other friends of the College. It is mainly Greek in design, but has a raised stage and a circular orchestra pit approached by a stepped ramp. The theater has a seating capacity of three thousand six hundred fifty, and is noted for its picturesque location and remarkable acoustic properties. Erected 1925",
+    "lon": "-118.208427",
+    "lat": "34.129250"
+  },
+  {
+  "title":"Facilities Management and Campus Safety",
+    "image_url": "http://www.oxy.edu/Images/Maps/facmgmt.jpg",
+    "description": "The Facilities Management Building houses the facilities office, shops, warehouses, and Campus Safety. Atop are four tennis courts Erected 1977.",
+    "lon": "-118.213577",
+    "lat": "34.128983"
+  },
+  {
+  "title":"College Guest House",
+    "image_url": "http://www.oxy.edu/Images/Maps/guesthouse.jpg",
+    "description": "Originally designated as the Counseling Center, the Guest House now offers a place for visiting speakers and academics to spend the evening on the Oxy campus.",
+    "lon": "-118.210213",
+    "lat": "34.124748"
+  },
+  {
+  "title":"Collins House",
+    "image_url": "http://www.oxy.edu/Images/Maps/collinshouse_1.jpg",
+    "description": "The Dennis and Mollie Collins Admission House is located adjacent to the Visitor Parking structure. Remodeled in 1997, the building was formely the Faculty Club, and was originally designed as the President's House. Through the generosity of the Carl F. Braun Trust, this builiding was remodeled and refurnished in 1957 for its use as the Faculty Club. Erected 1922. Remodeled as the Faculty Club in 1957. Remodeled as the Office of Admission in 1997. Dedicated as the Dennis and Mollie Collins Admission House in 2002.",
+    "lon": "-118.210693",
+    "lat": "34.129623"
+  },
+  {
+  "title":"Emmons Health and Counseling Center",
+    "image_url": "http://www.oxy.edu/Images/Maps/emmons.jpg",
+    "description": "The Helen G. Emmons Memorial Health Center is the gift of G. E. Emmons in memory of his wife. This building is a health center for the treatment of minor illness and injuries and also houses the Counseling Center. Erected 1936.",
+    "lon": "-118.210327",
+    "lat": "34.127335"
+  },
+  {
+  "title":"Herrick Memorial Chapel/Interfaith Center",
+    "image_url": "http://www.oxy.edu/Images/Maps/herrick.jpg",
+    "description": "The Margaret Brown Herrick Memorial Chapel and Interfaith Center was made possible by a bequest of the late John Pierce Herrick in memory of his wife. This building provides for a Chapel accommodating five hundred, with the Mildred Miles Crew Memorial Organ, a three-manual Schlicker instrument honoring an alumna of the Class of 1945, a large meeting room, smaller seminar and reading rooms, and office accommodations for the Director of the Herrick Chapel and Interfaith Center. Erected 1964.",
+    "lon": "-118.212341",
+    "lat": "34.126255"
+  },
+  {
+  "title":"Johnson Student Center and Freeman College Union",
+    "image_url": "http://www.oxy.edu/images/maps/johnsoncenter_1.jpg",
+    "description": "The Johnson Student Center and Robert Freeman College Union, named for a trustee of the College as well as a generous benefactor, serves as a center for the social life of the campus. It houses the Associated Students of Occidental College (ASOC) office, the Bookstore, Campus Dining Rooms and Offices, the Mailroom, the Post Office, the Office of Student Life and the central heating plant. The building contains two named lounges, one in memory of Mrs. Julia A. Pipal, for many years Director of Residence and Social Activities; and the other in honor of Clancy Morrison, in 1975, after three decades as Manager of the Freeman Union.<i>Erected 1928, Enlarged 1956 and 1962, Remodeled as Johnson Student Center 1997-1999.",
+    "lon": "-118.212234",
+    "lat": "34.127598"
+  },
+  {
+  "title":"Keck Theater",
+    "image_url": "http://www.oxy.edu/Images/Maps/keck.jpg",
+    "description": "The Keck Theater, named for the late William M. Keck in recognition of the generous gifts from his estate, provides a state-of-the-art, professional quality stage. Used for both Theater Department and Cultural Studies classes, the building is the first in the United States featuring adjustable Lambda platforms allowing various configurations for a total of four hundred twelve seats. Erected 1987.",
+    "lon": "-118.208344",
+    "lat": "34.128368"
+  },
+  {
+  "title":"Mullin Studio and Art Gallery",
+    "image_url": "http://www.oxy.edu/Images/Maps/mullin.jpg",
+    "description": "The Pamela M. Mullin and Peter W. Mullin Family Studio and Art Gallery was dedicated during the Founder's Day Celebration in 1997. The facility opened for academic use during the Fall Semester of 1997. Consisting of a classroom, gallery, metal and woodworking shops, and studio space for sculpture, the structure greatly enhances Occidental's Visual Arts facilities. Erected 1997.",
+    "lon": "-118.209854",
+    "lat": "34.129612"
+  },
+  {
+  "title":"President's House",
+    "image_url": "http://www.oxy.edu/Images/Maps/presidents-house.jpg",
+    "description": "The President's House is located near the Hillside Theater. Built in the California Monterey style of architecture. Erected 1932.",
+    "lon": "-118.209793",
+    "lat": "34.128822"
+  },
+  {
+  "title":"Samuelson Campus Pavilion",
+    "image_url": "http://www.oxy.edu/Images/maps/pavilion1.jpg",
+    "description": "Samuelson Pavilion, thanks to gifts received from Jack ('46) and Sally ('48) Samuelson, serves as a central gathering place for Occidental students, faculty, and staff. Designed by Myron Hunt, the building was originally a women's gymnasium; most recently it was used as studio space for sculpture classes. The renovation design by Brenda Levin provided a coffee bar, lounge, assembly space for student meetings and dances, and an expanded outdoor deck. In 1997, The Samuelson Pavilion was enlarged to accommodate the Tiger Cooler, a full-service grill serving sandwiches, hamburgers, wood-fired pizza, bagels, coffee, and hand-dipped ice cream. The Tiger Cooler replaced the O-Zone Coffee Bar which heralded a new era for the building. Erected 1922, Remodeled 1994, Enlarged 1997.",
+    "lon": "-118.211601",
+    "lat": "34.127934"
+  },
+  {
+  "title":"Sycamore Glen",
+    "image_url": "http://www.oxy.edu/Images/maps/sycamore1.jpg",
+    "description": "Sycamore Glen provides a quiet respite for the Occidental community. With several picnic tables and a concrete staging area, the Glen is primarily used for social functions.",
+    "lon": "-118.209801",
+    "lat": "34.126869"
+  },
+  {
+  "title":"Thorne Hall",
+    "image_url": "http://www.oxy.edu/Images/maps/thorne1.jpg",
+    "description": "Belle Wilber Thorne Hall, the College's main auditorium, was erected by Charles H. Thorne in memory of his wife. In addition to the auditorium, seating 792, the building provides a large stage, practice and rehearsal rooms for choral groups, and other facilities for the Music Department. The four-manual Skinner organ is the gift of Mrs. Euclid W. McBride '19 and her husband.&nbsp;<em>Erected 1938. With funding from the James Irvine Foundation, the auditorium was completely remodeled in 1989.",
+    "lon": "-118.212540",
+    "lat": "34.128880"
+  },
+  {
+  "title":"Visitor and Admission Parking",
+    "description": "Parking structure for visitors",
+    "lon": "-118.210884",
+    "lat": "34.129498"
+  },
+  {
+  "title":"BioScience Building",
+    "image_url": "http://www.oxy.edu/images/maps/bioscience.jpg",
+    "description": "The BioScience Building provides thirteen laboratories for student and faculty research in both biology and biochemistry. Attached to the Moore Laboratory of Zoology, the building is connected via a pedestrian bridge to the Norris Hall of Chemistry. Also included are a vivarium, herbarium, aquarium, greenhouses, environmental rooms, and darkrooms. Erected 1988.",
+    "lon": "-118.210335",
+    "lat": "34.126476"
+  },
+  {
+  "title":"Booth Music and Speech Center",
+    "image_url": "http://www.oxy.edu/Images/Maps/booth.jpg",
+    "description": "The Willis H. Booth Hall consists of a one-story building, with practice rooms and the Helen and Remsen Bird Studio. A two-level structure providing departmental offices, teaching studios, music library and listening booths, practice and seminar rooms, was added later. The second structure houses special facilities for music including the Douglas Wright, Jr., Memorial Room for choral music, and the Dorothy Buffum Chandler Instrumental Rehearsal and Music Classroom. Both structures are the gifts of many alumni and friends of the College. It houses the Education and Music Departments. Original structure erected 1929; two-level structure, 1960. Remodeled in 1988 to include office and classroom space for the Education Department.",
+    "lon": "-118.212097",
+    "lat": "34.129223"
+  },
+  {
+  "title":"Fowler Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/fowler.jpg",
+    "description": "Fowler Hall, erected as a memorial to Eldridge M. Fowler of Pasadena by his daughter and granddaughter, provides classrooms, laboratories, and offices for the Geology, Mathematics, and Physics departments. The Edward Hayes Morse Collection of Astronomical Instruments and the Frank J. Smiley Geological Collection are located in Fowler Hall. Erected 1914.",
+    "lon": "-118.211235",
+    "lat": "34.126575"
+  },
+  {
+  "title":"Hameetman Science Center",
+    "image_url": "http://www.oxy.edu/Images/Maps/hameetman.jpg",
+    "description": "The Hameetman Science Center was designed by the firm of Anshen+Allen within the Myron Hunt tradition and with the best of Occidental in mind, based on the principle of close interaction between students and faculty engaged in cutting-edge research. Opened in August 2003, the building named in honor of Fred Hameetman ’61 and his wife Joyce is home to the College’s geology, physics, and environmental science programs. The 41,000-square-foot, three-story structure houses 23 research and teaching labs (including plasma physics and fluid dynamics), 15 faculty offices, and three seminar rooms.",
+    "lon": "-118.211174",
+    "lat": "34.125553"
+  },
+  {
+  "title":"Johnson Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/johnson1.jpg",
+    "description": "Johnson Hall is the gift of Mr. and Mrs. O. T. Johnson, generous benefactors of the College. The interior was remodeled with grants provided by The Ahmanson Foundation and The James Irvine Foundation. Located in Johnson Hall are Alumni Auditorium, seating one hundred and forty-five, classrooms, the Audiovisual department, faculty offices, and the Language Laboratory. Also in Johnson Hall are the Chinese, Cognitive Science, Diplomacy and World Affairs, French, German, Japanese, Latin, Linguistics, Philosophy, Russian, and Spanish department offices. Erected 1914; remodeled 1982.",
+    "lon": "-118.211510",
+    "lat": "34.127304"
+  },
+  {
+  "title":"Mary Norton Clapp Library",
+    "image_url": "http://www.oxy.edu/Images/Maps/library.jpg",
+    "description": "The Mary Norton Clapp Library is the gift of Mrs. Emma B. Norton in memory of her daughter, Mrs. E. P. Clapp. The original structure of stacks and reading, reference, periodical, and seminar rooms was doubled in 1955, at which time a Fine Book Room was equipped and furnished as a memorial to Carl F. Braun through gifts from the Braun family. The Jeffers Room, with a capacity of forty-six, is a memorial to Robinson Jeffers of the Class of 1905. The Bill Henry Room is a memorial to an alumnus of the Class of 1914. A four-story major addition in 1970 provides additional shelving space, reading rooms, and an audio-visual study center, special collections area and houses offices of the Information Technology Services Department. Erected 1924; first addition, 1955; second addition, 1970.",
+    "lon": "-118.211525",
+    "lat": "34.125973"
+  },
+  {
+  "title":"Moore Laboratory of Zoology",
+    "description": "The Moore Laboratory of Zoology is the gift of Dr. Robert T. Moore and Margaret C. Moore of Borestone Mountain, Monson, Maine as Trustees of the Orcutt and Margaret Trusts. This building contains the world-renown research natural history collection of approximately 70,000 specimens of Neotropical birds and mammals (including the largest collection of birds of Mexico). The upper floor houses the teaching laboratory, offices, and research facilities related to the bird and mammal collections, whereas the lower floor contains a classroom, offices, sea water system and aquarium room for studies in marine biology. Erected 1951; enlarged 1969.",
+    "lon": "-118.210197",
+    "lat": "34.126602"
+  },
+  {
+  "title":"Norris Hall of Chemistry",
+    "image_url": "http://www.oxy.edu/Images/Maps/norris.jpg",
+    "description": "The Kenneth T. Norris Hall of Chemistry, containing the Earle M. Jorgensen Laboratories in Chemistry and the Samuel B. Mosher Science Lecture Halls, recognizes the vision and the generosity of these members of the Board of Trustees and their wives, and the generosity of the Carl F. Braun Trust. This building includes an auditorium seating two hundred twenty-five, two lecture rooms, the John Stauffer Research Laboratory and other laboratories and offices for the department of Chemistry. Erected 1960; Renovated 1992.",
+    "lon": "-118.210724",
+    "lat": "34.126247"
+  },
+  {
+  "title":"Psychology Laboratory",
+    "image_url": "http://www.oxy.edu/Images/Maps/swan1.jpg",
+    "description": "James Swan Hall, at the west side of the main quadrangle, was built by Mrs. Frances B. Swan as a tribute to her husband. The building provides seminar rooms and faculty offices. The facility served as a men's residence hall until the early 1960s. South Swan houses the American Studies, Economics, and History Departments. Middle Swan is the home for the Anthropology, Psychology, and Sociology Departments. North Swan holds the offices for English and Comparative Literary Studies, Institutional Research, and Politics Departments.<i>Erected 1914.",
+    "lon": "-118.212448",
+    "lat": "34.127056"
+  },
+  {
+  "title":"Swan Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/swan1.jpg",
+    "description": "James Swan Hall, at the west side of the main quadrangle, was built by Mrs. Frances B. Swan as a tribute to her husband. The building provides seminar rooms and faculty offices. The facility served as a men's residence hall until the early 1960s. South Swan houses the American Studies, Economics, and History Departments. Middle Swan is the home for the Anthropology, Psychology, and Sociology Departments. North Swan holds the offices for English and Comparative Literary Studies, Institutional Research, and Politics Departments.<i>Erected 1914.",
+    "lon": "-118.212418",
+    "lat": "34.126930"
+  },
+  {
+  "title":"Urban and Environmental Policy Institute",
+    "image_url": "http://www.oxy.edu/Images/Maps/uepi.jpg",
+    "description": "<br>Urban and Environmental Policy Institute occupies a hillside location adjacent to the Remsen Bird Hillside Theater. The facility was constructed in the California Monterey style of architecture.<i>Erected 1932.",
+    "lon": "-118.209290",
+    "lat": "34.129864"
+  },
+  {
+  "title":"Weingart Hall for the Liberal Arts",
+    "image_url": "http://www.oxy.edu/Images/Maps/weingart.jpg",
+    "description": "The Weingart Center houses the Art History and Visual Arts, International Programs, and Cultural Studies Program department offices.The Center occupies a building originally erected in 1925 as Bertha Harton Orr Hall, a student residence from 1925-1984. A lounge in the Center is dedicated to the memory of Florence Norma Brady, 1899-1986, Occidental Class of 1919, College Registrar-Emerita and Registrar from 1930 to 1966. Remodeled 1986.",
+    "lon": "-118.210930",
+    "lat": "34.128139"
+  },
+  {
+  "title":"Alumni Gymnasium",
+    "image_url": "http://www.oxy.edu/Images/Maps/alumni-gym.jpg",
+    "description": "The Alumni Gymnasium, a reinforced concrete structure situated south of Patterson Stadium, provides a dance studio, classrooms, and offices for the Department of Kinesiology. It was funded by gifts of Alumni and the Associated Students of Occidental College. In the Spring of 1997, Alumni Gymnasium was temporarily remodeled to house the main dining rooms for the College. Upon completion of the Johnson Student Center, Alumni Gymnasium will return to its athletic purpose. Erected 1926; enlarged 1965, remodeled 1997.",
+    "lon": "-118.212921",
+    "lat": "34.126842"
+  },
+  {
+  "title":"Anderson Field",
+    "image_url": "http://www.oxy.edu/Images/Maps/anderson-field.jpg",
+    "description": "The Bill Anderson Baseball Field is named in honor of a member of the faculty and Director of Athletics upon his retirement. Established 1955. The Paul Spencer Baseball Field House, a gift of Paul Spencer '28, located on Anderson Field, provides locker rooms for the baseball team. Erected 1958.",
+    "lon": "-118.207954",
+    "lat": "34.125980"
+  },
+  {
+  "title":"Bell Field",
+    "image_url": "http://www.oxy.edu/Images/Maps/bell-field.jpg",
+    "description": "Bell Field is the home of the Occidental Softball team. It is located south of the main athletic facilities, including Alumni and Rush Gymnasiums, and the Culley Athletic Facility.",
+    "lon": "-118.212791",
+    "lat": "34.126041"
+  },
+  {
+  "title":"Culley Athletic Facility",
+    "image_url": "http://www.oxy.edu/Images/Maps/culley.jpg",
+    "description": "<br>The Benjamin H. Culley Athletic Facility is named in honor of a former Dean of Men, Dean of Students, Director of Financial Aid, and Professor of Mathematics (1943-1982). The structure houses the Sports Medicine Center, a weight room, and locker and equipment rooms. Erected 1965.",
+    "lon": "-118.213867",
+    "lat": "34.127022"
+  },
+  {
+  "title":"Patterson Field/Bill Henry Track",
+    "image_url": "http://www.oxy.edu/Images/Maps/patterson-field.jpg",
+    "description": "The W. C. Patterson Athletic Field is named in honor of a friend of the College and former trustee, with funds provided by Mrs. Patterson. Spectator stands have a seating capacity of two thousand, six hundred. Constructed 1916; Stands rebuilt 1982. The Bill Henry Track is named in honor of William M. Henry '14. The all-weather track, on the site of the original built in 1916, was constructed at Patterson Field under the auspices of the Los Angeles Olympic Organizing Committee, with funds provided by the Atlantic Richfield Company. Constructed 1983.",
+    "lon": "-118.213394",
+    "lat": "34.127666"
+  },
+  {
+  "title":"Rush Gymnasium",
+    "image_url": "http://www.oxy.edu/Images/Maps/rush-gym.jpg",
+    "description": "The Frank Neill Rush Gymnasium, named in honor of a distinguished athlete and alumnus ('09); member of the Board of Trustees, 1926-74, and its Chairman 1947-51 and 1956-57; provides a basketball pavilion with a seating capacity of eighteen hundred; and dressing and locker facilities. The Roy Dennis Trophy Room was added in 1984. Erected 1965.",
+    "lon": "-118.213867",
+    "lat": "34.126675"
+  },
+  {
+  "title":"Soccer Fields",
+    "image_url": "http://www.oxy.edu/Images/Maps/lower-soccer.jpg",
+    "description": "The two soccer fields for Occidental College are located to the east of Anderson Field.<i>Constructed 1987.",
+    "lon": "-118.207512",
+    "lat": "34.127098"
+  },
+  {
+  "title":"Taylor Pool/Field Building",
+    "image_url": "http://www.oxy.edu/Images/Maps/taylor-pool.jpg",
+    "description": "Taylor Pool is the gift of Mr. and Mrs. J. Hartley Taylor and their daughter, Mary Barbara Taylor, '29. It is an open-air steam-heated pool. Erected 1930.",
+    "lon": "-118.213524",
+    "lat": "34.126682"
+  },
+  {
+  "title":"McKinnon Family Tennis Center ",
+    "image_url": "http://www.oxy.edu/Images/Maps/tennis-courts.jpg",
+    "description": "This set of tennis courts is located at the northwestern corner of the campus. The courts sit atop the Facilities Management building.",
+    "lon": "-118.213585",
+    "lat": "34.128654"
+  },
+  {
+  "title":"Bell-Young Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/bellyoung.jpg",
+    "description": "Bell-Young Hall, named in memory of two families of great significance in the life of the College, recognizes especially James G. Bell, a founder; Alphonzo E. Bell '95, onetime president of the Board of Trustees and great benefactor; and Dr. and Mrs. William Stewart Young, Dr. Young having been a founder and for fifty years the secretary of the Board of Trustees. This building also honors the members of these two families. The residence hall accommodates one hundred and eight students. Erected 1956.",
+    "lon": "-118.210220",
+    "lat": "34.124996"
+  },
+  {
+  "title":"Braun Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/braun.jpg",
+    "description": "Braun Hall is named in memory of Carl F. Braun, a generous benefactor of the College. This residence hall, fully air-conditioned, accommodates 110. Erected 1962.",
+    "lon": "-118.209129",
+    "lat": "34.126587"
+  },
+  {
+  "title":"Chilcott Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/chilcott.jpg",
+    "description": "<br>Chilcott Hall is named in honor of Mr. and Mrs. E. R. Chilcott and the Chilcott family, benefactors of the College. This residence hall accommodates eighty-one. Erected 1959.",
+    "lon": "-118.210648",
+    "lat": "34.128380"
+  },
+  {
+  "title":"Erdman Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/erdman.jpg",
+    "description": "Grace Carter Erdman Hall was built in memory of the wife of Professor Pardee Erdman. It was made possible in part by gifts from Mrs. Calvin Pardee, Mrs. Charles R. Erdman, Professor Erdman and friends, and in part by College funds. Erdman Hall accommodates seventy students. Erected 1927.",
+    "lon": "-118.210701",
+    "lat": "34.128750"
+  },
+  {
+  "title":"Haines Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/haines.jpg",
+    "description": "Haines Hall was built in honor of the Reverend Francis S. Haines and Mrs. Mary Orr Haines, his wife. Originally built to accommodate seventy-three students, this residence hall was enlarged to provide space for thirty-two additional students. Erected 1940;&nbsp;expanded 1954.",
+    "lon": "-118.210625",
+    "lat": "34.127949"
+  },
+  {
+  "title":"Newcomb Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/newcomb.jpg",
+    "description": "Anna Clute Newcomb Hall, a residence for one hundred and thirty-four students is named in recognition of Mrs. James G. Newcomb, trustee and benefactor, who had great interest in the welfare of students and rendered many services to the College. Erected 1956. Downstairs Remodeled 1996.",
+    "lon": "-118.211380",
+    "lat": "34.129269"
+  },
+  {
+  "title":"Norris Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/norris-reshall.jpg",
+    "description": "The Eileen Norris Residence Hall accommodates one hundred and fifty-three students, with rooms arranged in cluster groups of eight. Named in honor of Mrs. Kenneth T. Norris in recognition of the gifts from her and her husband. Erected 1966.",
+    "lon": "-118.209068",
+    "lat": "34.127232"
+  },
+  {
+  "title":"Pauley Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/pauley.jpg",
+    "description": "Pauley Hall is named in memory of Elbert L. and Ellen E. Pauley, in recognition of the gifts of Edwin W. Pauley '23 and Mrs. Pauley. This hall accommodates one hundred and seven students. Erected 1959.",
+    "lon": "-118.209595",
+    "lat": "34.125137"
+  },
+  {
+  "title":"Rangeview Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/rangeview.jpg",
+    "description": "Rangeview Hall is Occidental’s newest&nbsp;residence hall. Touting four stories and 274 beds, it is the largest hall on&nbsp;campus.&nbsp;The building features&nbsp;private bathrooms&nbsp;in each room, a fitness center, and classrooms, lounges and study halls scattered throughout the building, which is arranged around a series of internal courtyards.&nbsp;Rangeview also houses&nbsp;its own 235-space parking garage. Erected 2007.",
+    "lon": "-118.208580",
+    "lat": "34.124771"
+  },
+  {
+  "title":"Stearns Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/stearns.jpg",
+    "description": "Stearns Hall, a residence for one hundred and twenty-six students, is named in honor of three brothers and their families; the late J.V.M. Stearns '25, Theodore L. Stearns '15, and Francis A. Stearns '15. Erected 1983.",
+    "lon": "-118.209961",
+    "lat": "34.127659"
+  },
+  {
+  "title":"Stewart-Cleland Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/stewie.jpg",
+    "description": "Stewart-Cleland Hall is named in honor of Milton and Mary W. Stewart, generous benefactors of the College for a lon period of years; and Robert Glass Cleland '07, Ph.D., LL.D., Litt. D., historian, author, Professor of History, former Dean of the Faculty and Vice-President and member of the Board of Trustees; his father, the Reverend Robert W. Cleland; his mother Sallie Glass Cleland; his brother, T. Horace Cleland '03 and his wife, Muriel Stewart Cleland. This building houses one hundred and forty-two students. Erected 1953.",
+    "lon": "-118.209595",
+    "lat": "34.125893"
+  },
+  {
+  "title":"Wylie Hall",
+    "image_url": "http://www.oxy.edu/Images/Maps/wylie.jpg",
+    "description": "Herbert G. Wylie Hall, named in honor of a generous patron of the College and a member of the Board of Trustees, provides rooms for fifty-one students. Erected 1940.",
+    "lon": "-118.210739",
+    "lat": "34.125469"
+  },
+  {
+  "title":"Alumni Relations",
+    "lon": "-118.214272",
+    "lat": "34.125732"
+  },
+  {
+  "title":"Central Chiller Plant",
+    "lon": "-118.213203",
+    "lat": "34.129169"
+  },
+  {
+  "title":"Central Quadrangle",
+    "lon": "-118.211891",
+    "lat": "34.126770"
+  },
+  {
+  "title":"Child Development Center",
+    "lon": "-118.210358",
+    "lat": "34.129330"
+  },
+  {
+  "title":"Community Literacy Center",
+    "lon": "-118.212730",
+    "lat": "34.129311"
+  },
+  {
+  "title":"Intercultural Community Center,",
+    "lon": "-118.211700",
+    "lat": "34.124916"
+  },
+  {
+  "title":"Upper Campus Parking Lot",
+    "lon": "-118.208374",
+    "lat": "34.127605"
+  },
+  {
+  "title":"Upward Bound",
+    "lon": "-118.214478",
+    "lat": "34.129150"
+  },
+  {
+  "title":"Berkus House",
+    "image_url": "http://www.oxy.edu/images/REHS/reshall_berkus.jpg",
+    "description": "Formerly referred to only as “1601”, the Berkus House is now home to twenty-seven women. Ther Berkus House was completely renovated in 2000, creating single, double, and quad rooms on two floors. The house has a large kitchen which allows residents to cook their own meals, if desired (meal plan is optional). First-year students are not housed in this building.",
+    "lon": "-118.214577",
+    "lat": "34.126198"
+  }]
+}

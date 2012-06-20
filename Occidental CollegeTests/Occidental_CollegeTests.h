@@ -3,7 +3,7 @@
 //  Occidental CollegeTests
 //
 //  Created by James Hildensperger on 5/12/12.
-//  Copyright (c) 2012 JusCollege. All rights reserved.
+//  Copyright (c) 2012 James Hildensperger. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
