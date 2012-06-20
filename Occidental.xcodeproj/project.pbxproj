@@ -60,10 +60,6 @@
 		3802A749155EDE3300A42786 /* RSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A740155EDE3300A42786 /* RSSEntry.m */; };
 		3802A74B155EDE3300A42786 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A744155EDE3300A42786 /* WebViewController.m */; };
 		3802A74C155EDE3300A42786 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3802A745155EDE3300A42786 /* WebViewController.xib */; };
-		3802A75B155EE20700A42786 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3802A75A155EE20700A42786 /* libz.1.2.5.dylib */; };
-		3802A75D155EE20E00A42786 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3802A75C155EE20E00A42786 /* CFNetwork.framework */; };
-		3802A75F155EE21700A42786 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3802A75E155EE21700A42786 /* SystemConfiguration.framework */; };
-		3802A761155EE21E00A42786 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3802A760155EE21E00A42786 /* MobileCoreServices.framework */; };
 		3802A76A155EE5A800A42786 /* SpacedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A769155EE5A800A42786 /* SpacedLabel.m */; };
 		3802A76D155EF10100A42786 /* CustomCalloutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A6D5155ED74E00A42786 /* CustomCalloutViewController.m */; };
 		3802A76E155EF12C00A42786 /* CalloutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A6CE155ED74E00A42786 /* CalloutAnnotationView.m */; };
@@ -92,6 +88,10 @@
 		3802A7E0155F90FB00A42786 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3802A7DF155F90FA00A42786 /* SettingsViewController.m */; };
 		3802A7E2155F936200A42786 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 3802A7E1155F936200A42786 /* gears.png */; };
 		3802A7E6155F9A7A00A42786 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3802A7E5155F9A7A00A42786 /* bg.jpg */; };
+		387BC6E3159243B60010C923 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BC6E2159243B60010C923 /* MobileCoreServices.framework */; };
+		387BC6E5159243C30010C923 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BC6E4159243C20010C923 /* SystemConfiguration.framework */; };
+		387BC6E7159243D30010C923 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BC6E6159243D20010C923 /* CFNetwork.framework */; };
+		387BC6E9159243E60010C923 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 387BC6E8159243E50010C923 /* libz.1.2.5.dylib */; };
 		38F52B2E155FB78000AF14B8 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F52B2D155FB78000AF14B8 /* ListViewController.m */; };
 		38F52B321560505000AF14B8 /* seal.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F52B301560505000AF14B8 /* seal.png */; };
 		38F52B331560505000AF14B8 /* seal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F52B311560505000AF14B8 /* seal@2x.png */; };
@@ -241,10 +241,6 @@
 		3802A743155EDE3300A42786 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		3802A744155EDE3300A42786 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		3802A745155EDE3300A42786 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		3802A75A155EE20700A42786 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		3802A75C155EE20E00A42786 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		3802A75E155EE21700A42786 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3802A760155EE21E00A42786 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3802A768155EE5A800A42786 /* SpacedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpacedLabel.h; sourceTree = "<group>"; };
 		3802A769155EE5A800A42786 /* SpacedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpacedLabel.m; sourceTree = "<group>"; };
 		3802A79D155F6EC100A42786 /* OxyWeatherStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OxyWeatherStation.h; sourceTree = "<group>"; };
@@ -286,6 +282,10 @@
 		3802A7DF155F90FA00A42786 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3802A7E1155F936200A42786 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
 		3802A7E5155F9A7A00A42786 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		387BC6E2159243B60010C923 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		387BC6E4159243C20010C923 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		387BC6E6159243D20010C923 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		387BC6E8159243E50010C923 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		38F52B2C155FB78000AF14B8 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		38F52B2D155FB78000AF14B8 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		38F52B301560505000AF14B8 /* seal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seal.png; sourceTree = "<group>"; };
@@ -346,10 +346,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3802A761155EE21E00A42786 /* MobileCoreServices.framework in Frameworks */,
-				3802A75F155EE21700A42786 /* SystemConfiguration.framework in Frameworks */,
-				3802A75D155EE20E00A42786 /* CFNetwork.framework in Frameworks */,
-				3802A75B155EE20700A42786 /* libz.1.2.5.dylib in Frameworks */,
+				387BC6E9159243E60010C923 /* libz.1.2.5.dylib in Frameworks */,
+				387BC6E7159243D30010C923 /* CFNetwork.framework in Frameworks */,
+				387BC6E5159243C30010C923 /* SystemConfiguration.framework in Frameworks */,
+				387BC6E3159243B60010C923 /* MobileCoreServices.framework in Frameworks */,
 				3802A710155EDB3900A42786 /* CoreLocation.framework in Frameworks */,
 				3802A70E155EDB3000A42786 /* MapKit.framework in Frameworks */,
 				3802A653155ED26800A42786 /* UIKit.framework in Frameworks */,
@@ -393,10 +393,10 @@
 		3802A651155ED26800A42786 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3802A760155EE21E00A42786 /* MobileCoreServices.framework */,
-				3802A75E155EE21700A42786 /* SystemConfiguration.framework */,
-				3802A75C155EE20E00A42786 /* CFNetwork.framework */,
-				3802A75A155EE20700A42786 /* libz.1.2.5.dylib */,
+				387BC6E8159243E50010C923 /* libz.1.2.5.dylib */,
+				387BC6E6159243D20010C923 /* CFNetwork.framework */,
+				387BC6E4159243C20010C923 /* SystemConfiguration.framework */,
+				387BC6E2159243B60010C923 /* MobileCoreServices.framework */,
 				3802A70F155EDB3900A42786 /* CoreLocation.framework */,
 				3802A70D155EDB2F00A42786 /* MapKit.framework */,
 				3802A652155ED26800A42786 /* UIKit.framework */,
