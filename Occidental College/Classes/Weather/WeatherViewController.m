@@ -1,60 +1,23 @@
-//
-//  WeatherViewController.m
-//  Occidental College
-//
-//  Created by James Hildensperger on 5/12/12.
-//  Copyright (c) 2012 James Hildensperger. All rights reserved.
-//
-
 #import "WeatherViewController.h"
 #import "SettingsViewController.h"
 #import "OxyWeatherStation.h"
-#import "SpacedLabel.h"
 
-#import "ASIHTTPRequest.h"
 #import "GDataXMLNode.h"
 #import "GDataXMLElement-Extras.h"
-#import "NSDate+InternetDateTime.h"
-#import "NSArray+Extras.h"
 #import "ShortForecast.h"
 #import "ShortForecastView.h"
 
 @interface WeatherViewController ()
-{
-    NSNumberFormatter *numFormatter;
-    __block WeatherViewController *blockSelf;
-}
+
+@property (nonatomic, strong) NSNumberFormatter *numberFormatter;
+
 @end
 
 @implementation WeatherViewController
-@synthesize navItem = _navItem;
-@synthesize tempLabel = _tempLabel;
-@synthesize timeLabel = _timeLabel;
-@synthesize dateLabel = _dateLabel;
-@synthesize pressureLabel = _pressureLabel;
-@synthesize humidityLabel = _humidityLabel;
-@synthesize sunIntensityLabel = _sunIntensityLabel;
-@synthesize windSpeedLabel = _windSpeedLabel;
-@synthesize windDirectionLabel = _windDirectionLabel;
-@synthesize rainLabel = _rainLabel;
-@synthesize weatherImageView = _weatherImageView;
-@synthesize weatherImageLoading = _weatherImageLoading;
-@synthesize refreshButton = _refreshButton;
-@synthesize backgroundView = _backgroundView;
-@synthesize currentDescriptionLabel = _currentDescriptionLabel;
 
-@synthesize scrollView = _scrollView;
-
-@synthesize queue = _queue;
-@synthesize allEntries = _allEntries;
-@synthesize currentDescription = _currentDescription;
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    blockSelf = self;
-    
+        
     [self getForecast];
 	// Do any additional setup after loading the view, typically from a nib.
 
@@ -66,10 +29,10 @@
     [seal setFrame:CGRectMake(60, 0, 44, 44)];
     [self.navigationController.navigationBar addSubview:seal];
     
-    SpacedLabel *label2 = [[SpacedLabel alloc] initWithFrame:CGRectMake(138, 20, 100, 29)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(138, 20, 100, 29)];
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setFont:[UIFont fontWithName:@"Verdana-Bold" size:12.0]];
-    [label2 setText:@"COLLEGE"];
+    [label2 setText:@"C O L L E G E"];
     [label2 setTextColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar addSubview:label2];
     
@@ -81,8 +44,6 @@
     [self.navigationController.navigationBar addSubview:label1];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gears.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings)];
-    
-    numFormatter = [[NSNumberFormatter alloc] init];
     
     
 //    //
@@ -130,33 +91,24 @@
 //    }
 }
 
-- (IBAction)showForecast:(id)sender
-{
+- (IBAction)showForecast:(id)sender {
     [self.scrollView scrollRectToVisible:CGRectMake(0, self.scrollView.frame.size.height, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:YES];
 }
 
-- (IBAction)showCurrent:(id)sender
-{
+- (IBAction)showCurrent:(id)sender {
     [self.scrollView scrollRectToVisible:CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height) animated:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self reload:nil];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)reload:(id)sender
-{
+- (IBAction)reload:(id)sender {
     // get the current date
     NSDate *date = [NSDate date];
     
@@ -184,7 +136,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void) getCurrentWeatherIcon
+- (void)getCurrentWeatherIcon
 {
     self.queue = [[NSOperationQueue alloc] init];
     
@@ -193,13 +145,28 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) urlString = @"http://api.wxbug.net/getLiveCompactWeatherRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=1";
     else urlString = @"http://api.wxbug.net/getLiveCompactWeatherRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=0";
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [_queue addOperation:request];
+//    NSError *error;
+//    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:[request responseData]
+//                                                           options:0 error:&error];
+//    if (doc == nil) {
+//        NSLog(@"Failed to parse %@", request.url);
+//    } else {
+//        
+//        NSMutableArray *entries = [NSMutableArray array];
+//        [blockSelf parseFeed:doc.rootElement entries:entries];
+//        
+//        if ([entries count])
+//        {
+//            if ([[entries objectAtIndex:0] isKindOfClass:[ShortForecast class]])
+//            {
+//                [self loadForecast:entries];
+//            }
+//        }
+//    }
+    
 }
 
-- (void) getForecast 
+- (void)getForecast
 {
     self.queue = [[NSOperationQueue alloc] init];
     
@@ -208,10 +175,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) urlString = @"http://api.wxbug.net/getForecastRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=1";
     else urlString = @"http://api.wxbug.net/getForecastRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=0";
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [_queue addOperation:request];
+//   same as above
 }
 
 - (void) loadForecast:(NSArray*)shortForecasts
@@ -299,35 +263,13 @@
     }    
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request {
-    
-    [_queue addOperationWithBlock:^{
-        
-        NSError *error;
-        GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:[request responseData] 
-                                                               options:0 error:&error];
-        if (doc == nil) { 
-            NSLog(@"Failed to parse %@", request.url);
-        } else {
-            
-            NSMutableArray *entries = [NSMutableArray array];
-            [blockSelf parseFeed:doc.rootElement entries:entries];                
-            
-            if ([entries count])
-            {
-                if ([[entries objectAtIndex:0] isKindOfClass:[ShortForecast class]]) 
-                {
-                    [self loadForecast:entries];
-                } 
-            }
-        }        
-    }];
-    
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-    NSError *error = [request error];
-    NSLog(@"Error: %@", error);
+- (NSNumberFormatter *)numberFormatter {
+    if (!_numberFormatter) {
+        _numberFormatter = [[NSNumberFormatter alloc] init];
+        [_numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
+        [_numberFormatter setMaximumFractionDigits:2];
+    }
+    return _numberFormatter;
 }
 
 - (void)setImperial
@@ -392,23 +334,14 @@
 	[service getWindSpeedInKmPerHour:self action:@selector(getWindSpeedInKmPerHourHandler:)];
 }
 
-
-
-// Handle the response from getHumidity.
-
-- (void) getHumidityHandler: (id) value 
-{
-    NSNumber *humidity = [[NSNumber alloc] initWithDouble:([value doubleValue]* 100.0)];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.humidityLabel.text = [NSString stringWithFormat:@"%@%%", [numFormatter stringFromNumber:humidity]];
+- (void)getHumidityHandler:(id)value {
+    self.humidityLabel.text = [NSString stringWithFormat:@"%@%%", [self.numberFormatter stringFromNumber:@([value doubleValue]* 100.0)]];
 }
 
 
 // Handle the response from getLastUpdate.
 
-- (void) getLastUpdateHandler: (id) value 
-{
+- (void)getLastUpdateHandler:(id)value {
     
 	// Handle errors
 	if([value isKindOfClass:[NSError class]]) {
@@ -432,100 +365,65 @@
 
 // Handle the response from getPressureInHgInches.
 
-- (void) getPressureInHgInchesHandler: (id) value 
-{
-    NSNumber *pressure = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.pressureLabel.text = [NSString stringWithFormat:@"%@ inHg%", [numFormatter stringFromNumber:pressure]];
+- (void)getPressureInHgInchesHandler:(id)value  {
+    self.pressureLabel.text = [NSString stringWithFormat:@"%@ inHg %%", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getPressureInMilliBar.
 
-- (void) getPressureInMilliBarHandler: (id) value 
-{
-    NSNumber *pressure = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.pressureLabel.text = [NSString stringWithFormat:@"%@ mbar", [numFormatter stringFromNumber:pressure]];
+- (void)getPressureInMilliBarHandler:(id)value{
+    self.pressureLabel.text = [NSString stringWithFormat:@"%@ mbar", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getRainInInches.
 
-- (void) getRainInInchesHandler: (id) value 
-{
-    NSNumber *rain = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.rainLabel.text = [NSString stringWithFormat:@"%@ in", [numFormatter stringFromNumber:rain]];
+- (void)getRainInInchesHandler:(id)value {
+    self.rainLabel.text = [NSString stringWithFormat:@"%@ in", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getRainInMillimeter.
 
-- (void) getRainInMillimeterHandler: (id) value 
-{
-    NSNumber *rain = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:0];
-    self.rainLabel.text = [NSString stringWithFormat:@"%@ mm", [numFormatter stringFromNumber:rain]];
+- (void)getRainInMillimeterHandler:(id)value {
+    [self.numberFormatter setMaximumFractionDigits:0];
+    self.rainLabel.text = [NSString stringWithFormat:@"%@ mm", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
+    [self.numberFormatter setMaximumFractionDigits:2];
 }
 
 
 // Handle the response from getSolarIntensityInWattsPerSqFeet.
 
-- (void) getSolarIntensityInWattsPerSqFeetHandler: (id) value 
-{
-    NSNumber *intensity = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ Wp/Sq Ft", [numFormatter stringFromNumber:intensity]];
+- (void)getSolarIntensityInWattsPerSqFeetHandler:(id)value {
+    self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ Wp/Sq Ft", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getSolarIntensityInWattsPerSqMeter.
 
-- (void) getSolarIntensityInWattsPerSqMeterHandler: (id) value 
-{
-    NSNumber *intensity = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ W/sqm", [numFormatter stringFromNumber:intensity]];
+- (void)getSolarIntensityInWattsPerSqMeterHandler:(id)value {
+    self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ W/sqm", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getTemperatureInCelsius.
 
-- (void) getTemperatureInCelsiusHandler: (id) value 
-{
-    NSNumber *temp = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.tempLabel.text = [NSString stringWithFormat:@"%@°C", [numFormatter stringFromNumber:temp]];
+- (void)getTemperatureInCelsiusHandler:(id)value {
+    self.tempLabel.text = [NSString stringWithFormat:@"%@°C", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getTemperatureInFahrenheit.
 
-- (void) getTemperatureInFahrenheitHandler: (id) value 
-{
-    NSNumber *temp = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.tempLabel.text = [NSString stringWithFormat:@"%@°F", [numFormatter stringFromNumber:temp]];
+- (void)getTemperatureInFahrenheitHandler:(id)value {
+    self.tempLabel.text = [NSString stringWithFormat:@"%@°F", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getWindDirection.
 
-- (void) getWindDirectionHandler: (id) value 
-{
-    NSNumber *degrees = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2]; 
-    
+- (void)getWindDirectionHandler:(id)value {
     NSString *cardinalDirection;
     
     if([value doubleValue] > 348.75 && [value doubleValue] < 11.25) cardinalDirection = @"N";
@@ -545,29 +443,21 @@
     if([value doubleValue] > 303.75 && [value doubleValue] < 326.25) cardinalDirection = @"NW";
     if([value doubleValue] > 326.25 && [value doubleValue] < 348.75) cardinalDirection = @"NNW";
     
-    self.windDirectionLabel.text = [NSString stringWithFormat:@"%@° %@", [numFormatter stringFromNumber:degrees], cardinalDirection];
+    self.windDirectionLabel.text = [NSString stringWithFormat:@"%@° %@", [self.numberFormatter stringFromNumber:@([value doubleValue])], cardinalDirection];
 }
 
 
 // Handle the response from getWindSpeedInKmPerHour.
 
-- (void) getWindSpeedInKmPerHourHandler: (id) value 
-{
-    NSNumber *speed = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ kph", [numFormatter stringFromNumber:speed]];
+- (void)getWindSpeedInKmPerHourHandler:(id)value {
+    self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ kph", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 
 // Handle the response from getWindSpeedInMiPerHour.
 
-- (void) getWindSpeedInMiPerHourHandler: (id) value 
-{
-    NSNumber *speed = [[NSNumber alloc] initWithDouble:[value doubleValue]];
-    [numFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
-    [numFormatter setMaximumFractionDigits:2];
-    self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ mph", [numFormatter stringFromNumber:speed]];
+- (void)getWindSpeedInMiPerHourHandler:(id)value {
+    self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ mph", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
 @end

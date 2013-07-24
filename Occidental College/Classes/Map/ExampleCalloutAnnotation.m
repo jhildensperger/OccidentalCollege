@@ -16,8 +16,6 @@
 #import "ExampleCalloutView.h"
 
 @implementation ExampleCalloutAnnotation
-@synthesize parentAnnotationView, mapView;
-@synthesize place = _place;
 
 - (id) initWithLat:(CGFloat)latitute lon:(CGFloat)longitude andPlace:(Place *)place;
 {

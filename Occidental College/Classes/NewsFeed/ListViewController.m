@@ -1,318 +1,79 @@
-//
-//  ListViewController.m
-//  Occidental College
-//
-//  Created by James Hildensperger on 5/13/12.
-//  Copyright (c) 2012 James Hildensperger. All rights reserved.
-//
-
 #import "ListViewController.h"
-#import "RSSEntry.h"
-#import "ASIHTTPRequest.h"
-#import "GDataXMLNode.h"
-#import "GDataXMLElement-Extras.h"
-#import "NSDate+InternetDateTime.h"
-#import "NSArray+Extras.h"
 #import "WebViewController.h"
-
-#import "SpacedLabel.h"
-
-@interface ListViewController ()
-{
-    BOOL feeds;
-    __block ListViewController *blockSelf;
-}
-
-@end
+#import "RSSParser.h"
+#import "RSSItem.h"
+#import "RSSItemCell.h"
 
 @implementation ListViewController
-@synthesize delegate = _delegate;
-@synthesize allEntries = _allEntries;
-@synthesize feeds = _feeds;
-@synthesize queue = _queue;
-@synthesize webViewController = _webViewController;
-@synthesize tableView = _tableView;
-@synthesize url = _url;
 
-#pragma mark -
-#pragma mark View lifecycle
-
-- (void)loadFeed
-{
-//    NSLog(@"%@", self.url);
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:self.url];
-    [request setDelegate:self];
-    [_queue addOperation:request];
-}
-
-- (void)addRows {
-    
-    RSSEntry *entry1 = [[RSSEntry alloc] initWithBlogTitle:@"1" 
-                                              articleTitle:@"1" 
-                                                articleUrl:@"1" 
-                                               articleDate:[NSDate date]];
-    RSSEntry *entry2 = [[RSSEntry alloc] initWithBlogTitle:@"2" 
-                                              articleTitle:@"2" 
-                                                articleUrl:@"2" 
-                                               articleDate:[NSDate date]];
-    RSSEntry *entry3 = [[RSSEntry alloc] initWithBlogTitle:@"3" 
-                                              articleTitle:@"3" 
-                                                articleUrl:@"3" 
-                                               articleDate:[NSDate date]];
-    
-    
-    [_allEntries insertObject:entry1 atIndex:0];
-    [_allEntries insertObject:entry2 atIndex:0];
-    [_allEntries insertObject:entry3 atIndex:0];
-    
-}
-
-- (void)viewDidLoad 
-{
+- (void)viewDidLoad {
     [super viewDidLoad]; 
-    
-    blockSelf = self;
-
-    self.queue = [[NSOperationQueue alloc] init];
-    
     [self loadFeed];
 }
 
-- (void)parseRss:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries 
-{
-    
-    NSArray *channels = [rootElement elementsForName:@"channel"];
-    for (GDataXMLElement *channel in channels) 
-    {            
-        NSString *blogTitle = [channel valueForChild:@"title"];                    
-        NSArray *items = [channel elementsForName:@"item"];
-        
-        for (GDataXMLElement *item in items)
-        {
-            NSString *articleTitle = [item valueForChild:@"title"];
-            NSString *articleUrl = [item valueForChild:@"link"];            
-            NSString *articleDateString = [item valueForChild:@"pubDate"];        
-            NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
-            
-            RSSEntry *entry = [[RSSEntry alloc] initWithBlogTitle:blogTitle 
-                                                     articleTitle:articleTitle 
-                                                       articleUrl:articleUrl 
-                                                      articleDate:articleDate];
-            [entries addObject:entry];
-        }      
-    }
-    
-}
-
-- (void)parseAtom:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries 
-{
-    
-    NSString *blogTitle = [rootElement valueForChild:@"title"];                    
-    
-    NSArray *items = [rootElement elementsForName:@"entry"];
-    for (GDataXMLElement *item in items) 
-    {
-        NSString *articleTitle = [item valueForChild:@"title"];
-        NSString *articleUrl = nil;
-        NSArray *links = [item elementsForName:@"link"];        
-        for(GDataXMLElement *link in links) 
-        {
-            NSString *rel = [[link attributeForName:@"rel"] stringValue];
-            NSString *type = [[link attributeForName:@"type"] stringValue]; 
-            if ([rel compare:@"alternate"] == NSOrderedSame && [type compare:@"text/html"] == NSOrderedSame) 
-            {
-                articleUrl = [[link attributeForName:@"href"] stringValue];
-            }
-        }
-        
-        NSString *articleDateString = [item valueForChild:@"updated"];        
-        NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC3339];
-        
-        RSSEntry *entry = [[RSSEntry alloc] initWithBlogTitle:blogTitle 
-                                                 articleTitle:articleTitle 
-                                                   articleUrl:articleUrl 
-                                                  articleDate:articleDate];
-        [entries addObject:entry];
-    }      
-}
-
-- (void)parseFeed:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries 
-{    
-    if ([rootElement.name compare:@"rss"] == NSOrderedSame) 
-    {
-        [self parseRss:rootElement entries:entries];
-    }
-    else if ([rootElement.name compare:@"feed"] == NSOrderedSame) 
-    {                       
-        [self parseAtom:rootElement entries:entries];
-    }
-    else 
-    {
-        NSLog(@"Unsupported root element: %@", rootElement.name);
-    }    
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request 
-{    
-    [_queue addOperationWithBlock:^{
-        
-        NSError *error;
-        GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:[request responseData] 
-                                                               options:0 error:&error];
-        if (doc == nil) NSLog(@"Failed to parse %@", request.url);
-        
-        else 
-        {
-            NSMutableArray *entries = [NSMutableArray array];
-            [blockSelf parseFeed:doc.rootElement entries:entries];
-            blockSelf.allEntries = [NSMutableArray array];
-            
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                
-                int insertIdx = -1;
-                
-                for (RSSEntry *entry in entries) 
-                {
-                    if (entry.articleDate) 
-                    {
-                        insertIdx = [_allEntries indexForInsertingObject:entry sortedUsingBlock:^(id a, id b) {
-                            RSSEntry *entry1 = (RSSEntry *) a;
-                            RSSEntry *entry2 = (RSSEntry *) b;
-                            return [entry1.articleDate compare:entry2.articleDate];
-                        }];
-
-                    }
-                    else insertIdx++;
-                    [_allEntries insertObject:entry atIndex:insertIdx];
-                    
-                    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]]
-                                          withRowAnimation:UITableViewRowAnimationRight];
-                }                            
-            }];
-            
-        }        
+- (void)loadFeed {
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:self.url];
+    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
+        self.feedItems = feedItems;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@",error);
     }];
-    
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request {
-    NSError *error = [request error];
-    NSLog(@"Error: %@", error);
-}
+#pragma mark - UITableViewDataSource
 
-
-/*
- - (void)viewWillAppear:(BOOL)animated {
- [super viewWillAppear:animated];
- }
- */
-
- - (void)viewDidAppear:(BOOL)animated {
- [super viewDidAppear:animated];
- }
-
-/*
- - (void)viewWillDisappear:(BOOL)animated {
- [super viewWillDisappear:animated];
- }
- */
-/*
- - (void)viewDidDisappear:(BOOL)animated {
- [super viewDidDisappear:animated];
- }
- */
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations.
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
-
-#pragma mark -
-#pragma mark Table view data source
-
-// Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return  [_allEntries count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.feedItems.count;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {    
+    static NSString *CellIdentifier = @"RSSCell";
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        cell = [[RSSItemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        UIView *cellBackground = [UIView new];
+        
+        cellBackground.backgroundColor = [UIColor lightGrayColor];
+        cell.backgroundView = cellBackground;
+        
+        cellBackground.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:0 alpha:1];
+        cell.selectedBackgroundView = cellBackground;
     }
     
-    [cell.textLabel setTextColor:[UIColor whiteColor]];
-    [cell.textLabel setFont:[UIFont fontWithName:@"STHeitiSC-Medium" size:18.0]];
+    RSSItem *item = [self.feedItems objectAtIndex:indexPath.row];
     
-    [cell.detailTextLabel setTextColor:[UIColor lightGrayColor]];
-    
-    [cell setBackgroundColor:[UIColor clearColor]]; 
-    
-    UIView *cellBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [cellBackground setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:128.0/255.0 blue:0 alpha:1]]; 
-    [cell setSelectedBackgroundView:cellBackground];
-    
-//    [cell.contentView setBackgroundColor:[UIColor clearColor]]; 
-//    [cell setBackgroundView:cellBackground];
-    
-    RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
-    
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    NSString *articleDateString = [dateFormatter stringFromDate:entry.articleDate];
     
-    cell.textLabel.text = entry.articleTitle;        
-    if (articleDateString)  cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", articleDateString, entry.blogTitle];
-    else cell.detailTextLabel.text = entry.blogTitle;
+    [(RSSItemCell *)cell titleLabel].text = item.title;
+    [(RSSItemCell *)cell subtitleLabel].text = [dateFormatter stringFromDate:item.pubDate];
+    [(RSSItemCell *)cell detailLabel].text = item.itemDescription;
     
     return cell;
 }
 
-#pragma mark -
-#pragma mark Table view delegate
+#pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{    
-    if (_webViewController == nil) {
-        self.webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle]];
-    }
-    RSSEntry *entry = [_allEntries objectAtIndex:indexPath.row];
-    _webViewController.entry = entry;
-    [self.navigationController pushViewController:_webViewController animated:YES];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
+    self.webViewController.item = self.feedItems[indexPath.row];
+    [self.navigationController pushViewController:self.webViewController animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark -
-#pragma mark Memory management
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-    self.webViewController = nil;
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+- (WebViewController *)webViewController {
+    if (!_webViewController) {
+        _webViewController = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:[NSBundle mainBundle]];
+    }
+    return _webViewController;
 }
 
 @end
