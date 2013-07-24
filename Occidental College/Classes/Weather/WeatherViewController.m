@@ -19,7 +19,6 @@
     [super viewDidLoad];
         
     [self getForecast];
-	// Do any additional setup after loading the view, typically from a nib.
 
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 2*self.scrollView.frame.size.height)];
     
@@ -44,51 +43,6 @@
     [self.navigationController.navigationBar addSubview:label1];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"gears.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings)];
-    
-    
-//    //
-//    ///
-//    ////DELETE
-//    for (int i = 0; i < 176; i++) 
-//    {
-//        NSLog(@"Downloading... %i", i);
-//        // Get an image from the URL below
-//        NSString *threeNumI;
-//        
-//        if (i < 10) threeNumI = [NSString stringWithFormat:@"00%i",i];
-//        else if (i < 100) threeNumI = [NSString stringWithFormat:@"0%i",i];
-//        else threeNumI = [NSString stringWithFormat:@"%i",i];
-//        
-//        NSString *urlString = [NSString stringWithFormat:@"http://img.weather.weatherbug.com/forecast/icons/localized/200x168/en/trans/cond%@.png", threeNumI];
-//        
-//        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
-//        
-//        NSLog(@"%f,%f",image.size.width,image.size.height);
-//        
-//        // Let's save the file into Document folder.
-//        // You can also change this to your desktop for testing. (e.g. /Users/kiichi/Desktop/)
-//        NSString *deskTopDir = @"/Users/jim/Desktop/icons";
-//        
-//        //NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//        
-//        // If you go to the folder below, you will find those pictures
-//        //NSLog(@"%@",docDir);
-//        
-//        NSLog(@"saving png %i", i);
-//        NSString *pngFilePath = [NSString stringWithFormat:@"%@/cond%@.png",deskTopDir, threeNumI];
-//        
-//        NSLog(@"%@",pngFilePath);
-//        
-//        NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
-//        [data1 writeToFile:pngFilePath atomically:YES];
-//        
-////        NSLog(@"saving jpeg");
-////        NSString *jpegFilePath = [NSString stringWithFormat:@"%@/test.jpeg",docDir];
-////        NSData *data2 = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
-////        [data2 writeToFile:jpegFilePath atomically:YES];
-//        
-//        NSLog(@"saving image %i done",i);
-//    }
 }
 
 - (IBAction)showForecast:(id)sender {
@@ -109,7 +63,6 @@
 }
 
 - (IBAction)reload:(id)sender {
-    // get the current date
     NSDate *date = [NSDate date];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -125,63 +78,35 @@
     [self  getCurrentWeatherIcon];
     [self getForecast];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) [self setMetric];
-    else [self setImperial];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) {
+        [self setMetric];
+    } else {
+        [self setImperial];
+    }
 }
 
-- (IBAction)showSettings:(id)sender
-{
+- (IBAction)showSettings:(id)sender {
     SettingsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)getCurrentWeatherIcon
-{
+- (void)getCurrentWeatherIcon {
     self.queue = [[NSOperationQueue alloc] init];
     
-    NSString *urlString;
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) urlString = @"http://api.wxbug.net/getLiveCompactWeatherRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=1";
-    else urlString = @"http://api.wxbug.net/getLiveCompactWeatherRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=0";
-    
-//    NSError *error;
-//    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:[request responseData]
-//                                                           options:0 error:&error];
-//    if (doc == nil) {
-//        NSLog(@"Failed to parse %@", request.url);
-//    } else {
-//        
-//        NSMutableArray *entries = [NSMutableArray array];
-//        [blockSelf parseFeed:doc.rootElement entries:entries];
-//        
-//        if ([entries count])
-//        {
-//            if ([[entries objectAtIndex:0] isKindOfClass:[ShortForecast class]])
-//            {
-//                [self loadForecast:entries];
-//            }
-//        }
-//    }
-    
+    NSString *urlString = @"http://api.wxbug.net/getLiveCompactWeatherRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=";
+    urlString = [urlString stringByAppendingString:[[NSUserDefaults standardUserDefaults] boolForKey:@"metric"] ? @"1" : @"0"];
 }
 
-- (void)getForecast
-{
+- (void)getForecast {
     self.queue = [[NSOperationQueue alloc] init];
     
-    NSString *urlString;
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"metric"]) urlString = @"http://api.wxbug.net/getForecastRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=1";
-    else urlString = @"http://api.wxbug.net/getForecastRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=0";
-    
-//   same as above
+    NSString *urlString = @"http://api.wxbug.net/getForecastRSS.aspx?ACode=A4543265476&lat=34.127752&long=-118.210933&unittype=";
+    urlString = [urlString stringByAppendingString:[[NSUserDefaults standardUserDefaults] boolForKey:@"metric"] ? @"1" : @"0"];
 }
 
-- (void) loadForecast:(NSArray*)shortForecasts
-{
-    for(int i = 0; i < 3; i ++)
-    {
+- (void)loadForecast:(NSArray*)shortForecasts {
+    for(int i = 0; i < 3; i ++) {
         CGFloat yPosition = self.scrollView.frame.size.height + 10 + (i*100);
         
         ShortForecastView *shortForecastView = [[[NSBundle mainBundle] loadNibNamed:@"ShortForecastView" owner:self options:nil] objectAtIndex:0]; 
@@ -272,65 +197,29 @@
     return _numberFormatter;
 }
 
-- (void)setImperial
-{
- 	// Create the service
+- (void)setImperial {
 	OxyWeatherStation* service = [OxyWeatherStation service];
 //    service.logging = YES;
-    
-	// Returns double. 
 	[service getHumidity:self action:@selector(getHumidityHandler:)];
-    
-	// Returns NSDate*. 
 	[service getLastUpdate:self action:@selector(getLastUpdateHandler:)];
-    
-	// Returns double. 
 	[service getPressureInHgInches:self action:@selector(getPressureInHgInchesHandler:)];
-
-	// Returns double. 
 	[service getRainInInches:self action:@selector(getRainInInchesHandler:)];
-    
-	// Returns double. 
 	[service getSolarIntensityInWattsPerSqFeet:self action:@selector(getSolarIntensityInWattsPerSqFeetHandler:)];
-    
-	// Returns double. 
 	[service getTemperatureInFahrenheit:self action:@selector(getTemperatureInFahrenheitHandler:)];
-    
-	// Returns double. 
 	[service getWindDirection:self action:@selector(getWindDirectionHandler:)];
-    
-	// Returns double. 
 	[service getWindSpeedInMiPerHour:self action:@selector(getWindSpeedInMiPerHourHandler:)];    
 }
 
-- (void)setMetric 
-{
-	// Create the service
+- (void)setMetric {
 	OxyWeatherStation* service = [OxyWeatherStation service];
 //	service.logging = YES;
-
-	// Returns double. 
 	[service getHumidity:self action:@selector(getHumidityHandler:)];
-    
-	// Returns NSDate*. 
 	[service getLastUpdate:self action:@selector(getLastUpdateHandler:)];
-
-	// Returns double. 
 	[service getPressureInMilliBar:self action:@selector(getPressureInMilliBarHandler:)];
-    
-	// Returns double. 
 	[service getRainInMillimeter:self action:@selector(getRainInMillimeterHandler:)];
-
-	// Returns double. 
 	[service getSolarIntensityInWattsPerSqMeter:self action:@selector(getSolarIntensityInWattsPerSqMeterHandler:)];
-    
-	// Returns double. 
 	[service getTemperatureInCelsius:self action:@selector(getTemperatureInCelsiusHandler:)];
-    
-	// Returns double. 
 	[service getWindDirection:self action:@selector(getWindDirectionHandler:)];
-    
-	// Returns double. 
 	[service getWindSpeedInKmPerHour:self action:@selector(getWindSpeedInKmPerHourHandler:)];
 }
 
@@ -338,53 +227,32 @@
     self.humidityLabel.text = [NSString stringWithFormat:@"%@%%", [self.numberFormatter stringFromNumber:@([value doubleValue]* 100.0)]];
 }
 
-
-// Handle the response from getLastUpdate.
-
 - (void)getLastUpdateHandler:(id)value {
-    
-	// Handle errors
 	if([value isKindOfClass:[NSError class]]) {
 		NSLog(@"%@", value);
 		return;
 	}
     
-	// Handle faults
 	if([value isKindOfClass:[SoapFault class]]) {
 		NSLog(@"%@", value);
 		return;
 	}				
     
-    
-	// Do something with the NSDate* result
-    NSDate* result = (NSDate*)value;
+    NSDate *result = (NSDate *)value;
 	NSLog(@"getLastUpdate returned the value: %@", result);
-    
 }
-
-
-// Handle the response from getPressureInHgInches.
 
 - (void)getPressureInHgInchesHandler:(id)value  {
     self.pressureLabel.text = [NSString stringWithFormat:@"%@ inHg %%", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
-
-// Handle the response from getPressureInMilliBar.
-
 - (void)getPressureInMilliBarHandler:(id)value{
     self.pressureLabel.text = [NSString stringWithFormat:@"%@ mbar", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
-
-// Handle the response from getRainInInches.
-
 - (void)getRainInInchesHandler:(id)value {
     self.rainLabel.text = [NSString stringWithFormat:@"%@ in", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
-
-
-// Handle the response from getRainInMillimeter.
 
 - (void)getRainInMillimeterHandler:(id)value {
     [self.numberFormatter setMaximumFractionDigits:0];
@@ -392,36 +260,21 @@
     [self.numberFormatter setMaximumFractionDigits:2];
 }
 
-
-// Handle the response from getSolarIntensityInWattsPerSqFeet.
-
 - (void)getSolarIntensityInWattsPerSqFeetHandler:(id)value {
     self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ Wp/Sq Ft", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
-
-
-// Handle the response from getSolarIntensityInWattsPerSqMeter.
 
 - (void)getSolarIntensityInWattsPerSqMeterHandler:(id)value {
     self.sunIntensityLabel.text = [NSString stringWithFormat:@"%@ W/sqm", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
-
-// Handle the response from getTemperatureInCelsius.
-
 - (void)getTemperatureInCelsiusHandler:(id)value {
     self.tempLabel.text = [NSString stringWithFormat:@"%@°C", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
 
-
-// Handle the response from getTemperatureInFahrenheit.
-
 - (void)getTemperatureInFahrenheitHandler:(id)value {
     self.tempLabel.text = [NSString stringWithFormat:@"%@°F", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
-
-
-// Handle the response from getWindDirection.
 
 - (void)getWindDirectionHandler:(id)value {
     NSString *cardinalDirection;
@@ -446,15 +299,9 @@
     self.windDirectionLabel.text = [NSString stringWithFormat:@"%@° %@", [self.numberFormatter stringFromNumber:@([value doubleValue])], cardinalDirection];
 }
 
-
-// Handle the response from getWindSpeedInKmPerHour.
-
 - (void)getWindSpeedInKmPerHourHandler:(id)value {
     self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ kph", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
 }
-
-
-// Handle the response from getWindSpeedInMiPerHour.
 
 - (void)getWindSpeedInMiPerHourHandler:(id)value {
     self.windSpeedLabel.text = [NSString stringWithFormat:@"%@ mph", [self.numberFormatter stringFromNumber:@([value doubleValue])]];
