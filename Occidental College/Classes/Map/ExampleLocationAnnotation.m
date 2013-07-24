@@ -15,8 +15,6 @@
 #import "ExampleLocationAnnotation.h"
 
 @implementation ExampleLocationAnnotation
-@synthesize coordinate, mapView;
-@synthesize place = _place;
 
 - (id) initWithPlace:(Place *)place;
 {

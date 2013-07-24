@@ -16,9 +16,6 @@
 
 
 @implementation ExampleCalloutView
-@synthesize titleLabel          = _titleLabel;
-@synthesize descriptionTextView = _descriptionTextView;
-@synthesize imageView           = _imageView;
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation
 {

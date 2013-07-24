@@ -20,13 +20,10 @@
 
 @class ExampleCalloutAnnotation;
 
-@interface ExampleLocationView : MKAnnotationView 
-<CustomAnnotationViewProtocol>
-{
-    ExampleCalloutAnnotation* calloutAnnotation;    
-}
+@interface ExampleLocationView : MKAnnotationView  <CustomAnnotationViewProtocol>
 
 @property (nonatomic, strong) Place *place;
+@property (nonatomic, strong) ExampleCalloutAnnotation* calloutAnnotation;
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 

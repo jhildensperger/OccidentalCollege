@@ -15,43 +15,35 @@
 #import "ExampleLocationView.h"
 
 @implementation ExampleLocationView
-@synthesize place = _place;
 
-- (id)initWithAnnotation:(id<MKAnnotation>)annotation
-{
-    if(!(self = [super initWithAnnotation:annotation reuseIdentifier:@"ExampleLocationView"]))
-        return nil;
-    
-    self.canShowCallout = NO;
-    self.image = [UIImage imageNamed:@"map_marker.png"];
-    self.centerOffset = CGPointMake(10, -16);
-    self.draggable = YES;
+- (id)initWithAnnotation:(id<MKAnnotation>)annotation {
+    if(self = [super initWithAnnotation:annotation reuseIdentifier:NSStringFromClass(self.class)]) {
+        self.canShowCallout = NO;
+        self.image = [UIImage imageNamed:@"map_marker.png"];
+        self.centerOffset = CGPointMake(10, -16);
+        self.draggable = YES;
+    }
     
     return self;
 }
 
-- (void)didSelectAnnotationViewInMap:(MKMapView*) mapView;
-{
-    
-    calloutAnnotation = [[ExampleCalloutAnnotation alloc] initWithLat:self.annotation.coordinate.latitude lon:self.annotation.coordinate.longitude andPlace:self.place];
-    
-    calloutAnnotation.parentAnnotationView = self;
-    [mapView addAnnotation:calloutAnnotation];
+- (void)didSelectAnnotationViewInMap:(MKMapView *)mapView {
+    self.calloutAnnotation = [[ExampleCalloutAnnotation alloc] initWithLat:self.annotation.coordinate.latitude lon:self.annotation.coordinate.longitude andPlace:self.place];
+    self.calloutAnnotation.parentAnnotationView = self;
+    [mapView addAnnotation:self.calloutAnnotation];
 }
 
-- (void)didDeselectAnnotationViewInMap:(MKMapView*) mapView;
-{
-    [mapView removeAnnotation:calloutAnnotation];
-    calloutAnnotation = nil;
+- (void)didDeselectAnnotationViewInMap:(MKMapView *)mapView {
+    [mapView removeAnnotation:self.calloutAnnotation];
+    self.calloutAnnotation = nil;
 }
 
-- (void)setAnnotation:(id<MKAnnotation>)annotation
-{
-    if(calloutAnnotation) {
-        [calloutAnnotation setCoordinate:annotation.coordinate];
-    }
-    
+- (void)setAnnotation:(id<MKAnnotation>)annotation {
     [super setAnnotation:annotation];
+
+    if(self.calloutAnnotation) {
+        [self.calloutAnnotation setCoordinate:annotation.coordinate];
+    }
 }
 
 @end

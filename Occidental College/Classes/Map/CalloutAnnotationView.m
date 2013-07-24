@@ -17,26 +17,12 @@
 
 @interface CalloutAnnotationView()
 
-@property (nonatomic, readonly) CGFloat yShadowOffset;
 @property (nonatomic) BOOL animateOnNextDrawRect;
-@property (nonatomic) CGRect endFrame;
-
-- (void)prepareFrameSize;
-- (void)prepareOffset;
-- (CGFloat)relativeParentXPosition;
-- (void)adjustMapRegionIfNeeded;
 
 @end
 
 
 @implementation CalloutAnnotationView
-
-@synthesize parentAnnotationView = _parentAnnotationView;
-@synthesize mapView = _mapView;
-@synthesize contentView = _contentView;
-@synthesize animateOnNextDrawRect = _animateOnNextDrawRect;
-@synthesize endFrame = _endFrame;
-@synthesize yShadowOffset = _yShadowOffset;
 
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 {
