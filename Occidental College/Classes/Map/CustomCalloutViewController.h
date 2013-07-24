@@ -19,9 +19,9 @@
 
 @interface CustomCalloutViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
-@property (nonatomic, strong) IBOutlet UINavigationBar *navBar;
+@property (nonatomic, weak) IBOutlet UINavigationBar *navBar;
 
-@property (nonatomic, strong) IBOutlet MKMapView* mapView;
+@property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, strong) ExampleLocationAnnotation* locationAnnotation; 
 
 @end

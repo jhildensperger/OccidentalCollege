@@ -1,21 +1,10 @@
-//
-//  WebViewController.h
-//  RSSFun
-//
-//  Created by Ray Wenderlich on 1/24/11.
-//  Copyright 2011 Ray Wenderlich. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
-@class RSSEntry;
+@class RSSItem;
 
-@interface WebViewController : UIViewController {
-    UIWebView *_webView;
-    RSSEntry *_entry;
-}
+@interface WebViewController : UIViewController
 
-@property (retain) IBOutlet UIWebView *webView;
-@property (retain) RSSEntry *entry;
+@property (nonatomic, strong) RSSItem *item;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end

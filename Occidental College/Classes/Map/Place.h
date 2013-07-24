@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) float             lat;
 @property (nonatomic, readonly) float             lon;
 
-- (id)initWithDictionary:(NSDictionary*)dictionary;
-+(Place *)placeWithDictionary:(NSDictionary*)dictionary;
-+(NSArray *)placesWithDictionaries:(NSArray*)dictionaries;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
++ (Place *)placeWithDictionary:(NSDictionary *)dictionary;
++ (NSArray *)placesWithDictionaries:(NSArray *)dictionaries;
 @end

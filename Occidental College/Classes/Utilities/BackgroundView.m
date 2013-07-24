@@ -1,23 +1,6 @@
-//
-//  BackgroundView.m
-//  Occidental College
-//
-//  Created by James Hildensperger on 5/13/12.
-//  Copyright (c) 2012 James Hildensperger. All rights reserved.
-//
-
 #import "BackgroundView.h"
 
 @implementation BackgroundView
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
 - (void)drawRect:(CGRect)rect {
 	CGFloat stroke = 1.0;

@@ -20,7 +20,6 @@
 #import "ExampleCalloutView.h"
 
 #import "Place.h"
-#import "SpacedLabel.h"
 
 @interface CustomCalloutViewController()
 @property (nonatomic, strong) NSArray *places;
@@ -30,12 +29,6 @@
 @end 
 
 @implementation CustomCalloutViewController
-@synthesize locationAnnotation, mapView;
-@synthesize navBar = _navBar;
-@synthesize places = _places;
-@synthesize locationManager = _locationManager;
-//@synthesize nearestPlace = _nearestPlace;
-//@synthesize distanceToNearestPlace = _distanceToNearestPlace;
 
 #pragma mark - View lifecycle
 
@@ -66,10 +59,10 @@
     [label1 setText:@"Occidental"];
     [self.navBar addSubview:label1];
     
-    SpacedLabel *label2 = [[SpacedLabel alloc] initWithFrame:CGRectMake(150, 16, 100, 29)];
+    UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(150, 16, 100, 29)];
     [label2 setBackgroundColor:[UIColor clearColor]];
     [label2 setFont:[UIFont fontWithName:@"Verdana-Bold" size:12.0]];
-    [label2 setText:@"COLLEGE"];
+    [label2 setText:@"C O L L E G E"];
     [label2 setTextColor:[UIColor whiteColor]];
     [self.navBar addSubview:label2];
 
@@ -94,19 +87,19 @@
 
 - (void)mapView:(MKMapView *)aMapView didSelectAnnotationView:(MKAnnotationView *)view {
     if([view conformsToProtocol:@protocol(CustomAnnotationViewProtocol)]) {
-        [((NSObject<CustomAnnotationViewProtocol>*)view) didSelectAnnotationViewInMap:mapView];
+        [((NSObject<CustomAnnotationViewProtocol>*)view) didSelectAnnotationViewInMap:self.mapView];
     }
 }
 
 - (void)mapView:(MKMapView *)aMapView didDeselectAnnotationView:(MKAnnotationView *)view {
     if([view conformsToProtocol:@protocol(CustomAnnotationViewProtocol)]) {
-        [((NSObject<CustomAnnotationViewProtocol>*)view) didDeselectAnnotationViewInMap:mapView];
+        [((NSObject<CustomAnnotationViewProtocol>*)view) didDeselectAnnotationViewInMap:self.mapView];
     }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if([annotation conformsToProtocol:@protocol(CustomAnnotationProtocol)]) {
-        return [((NSObject<CustomAnnotationProtocol>*)annotation) annotationViewInMap:mapView];
+        return [((NSObject<CustomAnnotationProtocol>*)annotation) annotationViewInMap:self.mapView];
     }
     return nil;
 }

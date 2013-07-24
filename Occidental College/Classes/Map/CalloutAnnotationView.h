@@ -11,26 +11,21 @@
 #import <MapKit/MapKit.h>
 #import "CustomCalloutProtocols.h"
 
-@interface CalloutAnnotationView : MKAnnotationView 
-<CustomAnnotationViewProtocol>
-{
-	MKAnnotationView *_parentAnnotationView;
-	MKMapView *_mapView;
-	CGRect _endFrame;
-	UIView *_contentView;
-	CGFloat _yShadowOffset;
-	CGPoint _offsetFromParent;
-	CGFloat _contentHeight;
-}
+@interface CalloutAnnotationView : MKAnnotationView  <CustomAnnotationViewProtocol>
 
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, strong) MKAnnotationView *parentAnnotationView;
 @property (nonatomic, strong) MKMapView *mapView;
-@property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, assign) CGRect endFrame;
+@property (nonatomic, assign) CGFloat yShadowOffset;
+@property (nonatomic, assign) CGPoint offsetFromParent;
+@property (nonatomic, assign) CGFloat contentHeight;
+
+- (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 
 - (void)animateIn;
 - (void)animateInStepTwo;
 - (void)animateInStepThree;
 - (void)setAnnotationAndAdjustMap:(id <MKAnnotation>)annotation;
-- (id)initWithAnnotation:(id<MKAnnotation>)annotation;
 
 @end
