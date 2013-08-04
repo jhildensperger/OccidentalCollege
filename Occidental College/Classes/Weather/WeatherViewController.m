@@ -117,17 +117,11 @@
 }
 
 - (void)parseRss:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries {
-    
     NSArray *channels = [rootElement elementsForName:@"channel"];
-    for (GDataXMLElement *channel in channels)
-    {            
-        
+    for (GDataXMLElement *channel in channels) {            
         NSArray *items = [channel elementsForName:@"aws:weather"];
-        for (GDataXMLElement *item in items) 
-        {
-            
-            if ([item valueForChild:@"aws:current-condition"])
-            {
+        for (GDataXMLElement *item in items) {
+            if ([item valueForChild:@"aws:current-condition"]) {
                 self.currentDescription = [item valueForChild:@"aws:current-condition"];
                 self.currentDescriptionLabel.text = self.currentDescription;
                 
@@ -139,23 +133,16 @@
                 [self.weatherImageView setHidden:NO];
             }
             
-            else 
-            {
+            else {
                 NSArray *items = [item elementsForName:@"aws:forecasts"];
                 int count = 1;
-                for (GDataXMLElement *item in items) 
-                {
-                    
+                for (GDataXMLElement *item in items) {
                     NSArray *items = [item elementsForName:@"aws:forecast"];
-                    if (count > 3)
-                    {
+                    if (count > 3) {
                         break;  
                     }
                     
-                    
-                    for (GDataXMLElement *item in items) 
-                    {
-                        
+                    for (GDataXMLElement *item in items) {
                         NSString *imageName = [item valueForChild:@"aws:image"];
                         imageName = [imageName substringFromIndex:([imageName rangeOfString:@"icons/"].location + 6)];  
                         imageName = [imageName substringToIndex:([imageName rangeOfString:@".gif"].location)];
